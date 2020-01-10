@@ -163,6 +163,138 @@ Tarea.prototype.mostrarInformacionTarea = function() {
 const tarea1 = new Tarea('Aprender JavaScript y React', 'Urgente');
 console.log(tarea1);
 console.log(tarea1.mostrarInformacionTarea());
+
+//Destructuring de objetos
+const aprendiendoJS = {
+  version: {
+    nueva: 'ES6',
+    anterior: 'ES5'
+  },
+  frameworks: ['React', 'VueJS', 'AngularJS']
+}
+console.log(aprendiendoJS);
+
+//Version anterior
+let version = aprendiendoJS.version.nueva;
+console.log(version);
+//Destructuring
+let {nueva} = aprendiendoJS.version;
+console.log(nueva);
+
+//Object literal enhancement
+const banda = 'Metallica';
+const genero = 'Heavy Metal';
+const canciones = ['Master of Puppets', 'Seek & Destroy', 'Enter Sandman'];
+
+//Forma anterior
+const metallica = {
+  banda: banda,
+  genero: genero,
+  canciones: canciones
+}
+
+//Forma nueva
+const metallica = {banda, genero, canciones};
+console.log(metallica);
+
+//Metodos o funciones en un objeto
+const persona = {
+  nombre: 'Juan',
+  trabajo: 'Desarrollador Web',
+  edad: 23,
+  musicaRock: true,
+  mostrarInfomacion () {
+    console.log(`${this.nombre} es ${this.trabajo} y su edad es ${this.edad}`)
+  }
+}
+
+persona.mostrarInfomacion();
+
+//Arreglos y .map
+const carrito = ['Producto 1', 'Producto 2', 'Producto 3'];
+console.log(carrito);
+
+//Con forEach
+const appContenedor = document.querySelector('#app');
+let html = '';
+carrito.forEach(producto => {
+  html += `<li>${producto}</li>`;
+})
+appContenedor.innerHTML = html;
+
+//Con map crea un nuevo arreglo con el nuevo texto Ex: 0: El producto es Producto 1, 1: El producto es Producto 2, 2: El producto es Producto 3
+carrito.map(producto => {
+  return 'El producto es ' + producto;
+})
+
+//Object.keys (Trae los nombres de las llaves de los objetos en un arreglo: nombre, profesion, edad)
+const persona = {
+  nombre: 'Juan',
+  profesion: 'Desarrollador Web',
+  edad: 23
+}
+console.log(Object.keys(persona));
+
+//Spread operator
+let lenguajes = ['JavaScript', 'PHP', 'Python'];
+let frameworks = ['ReactJS', 'Laravel', 'Django'];
+
+//Version anterior
+let combinacion = lenguajes.concat(frameworks);
+console.log(combinacion);
+
+//Version nueva
+let combinacion1 = [...lenguajes, ...frameworks];
+console.log(combinacion1);
+
+//Crear una copia de un arreglo
+let nuevoArreglo = [...lenguajes];
+console.log(nuevoArreglo);
+
+//Funcionalidad de reverse con spread no desordena el vector inicial
+//let [ultimo] = lenguajes.reverse();
+//console.log(lenguajes);//["Python", "PHP", "JavaScript"]
+let [ultimo] = [...lenguajes].reverse();
+console.log(lenguajes);//["JavaScript", "PHP", "Python"]
+console.log(ultimo);//Python
+
+//otra aplicación del spread
+function suma(a,b,c) {
+  console.log(a+b+c);
+}
+const numeros = [1,2,3];
+suma(...numeros);
 */
+
+//Metodos en arreglos
+const personas = [
+  {nombre: 'Juan', edad: 23, aprendiendo: 'JavaScript'},
+  {nombre: 'Pablo', edad: 18, aprendiendo: 'PHP'},
+  {nombre: 'Alejandra', edad: 21, aprendiendo: 'AdobeXD'},
+  {nombre: 'Karen', edad: 30, aprendiendo: 'Python'},
+  {nombre: 'Miguel', edad: 35, aprendiendo: 'ReactJS'}
+]
+//Filter -> Mayores de 28 años
+const mayores = personas.filter(persona => {
+  return persona.edad > 28;
+});
+console.log(mayores);
+
+//Find -> Que aprende Alejandra y su edad
+const resultado = personas.find(persona => {
+  return persona.nombre === 'Alejandra';
+});
+console.log(`${resultado.nombre} está aprendiendo: ${resultado.aprendiendo}`);
+
+//Reduce -> Realiza promedio de las edades de los objetos
+let total = personas.reduce((edadTotal, persona) => {
+  return edadTotal + persona.edad;
+}, 0);
+console.log(total/personas.length);
+
+
+
+
+
 
 
