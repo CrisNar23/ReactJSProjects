@@ -264,7 +264,7 @@ function suma(a,b,c) {
 }
 const numeros = [1,2,3];
 suma(...numeros);
-*/
+
 
 //Metodos en arreglos
 const personas = [
@@ -291,6 +291,76 @@ let total = personas.reduce((edadTotal, persona) => {
   return edadTotal + persona.edad;
 }, 0);
 console.log(total/personas.length);
+
+
+//Promises
+const aplicarDescuento = new Promise ((resolve, reject) => {
+  setTimeout( () => {
+    let descuento = true;
+    if (descuento) {
+      resolve('Descuento aplicado!');
+    } else {
+      reject('No se pudo aplicar el descuento');
+    }
+  }, 3000);
+});
+
+aplicarDescuento.then(resultado => {
+  console.log(resultado);  
+})
+*/
+
+//Promises con ajax
+const descargarUsuarios = cantidad => new Promise((resolve, reject) => {
+  //Pasar la cantidad a la api
+  const api = `https://randomuser.me/api/?results=${cantidad}&nat=us`;
+  
+  //Realizar llamado a ajax
+  const xhr = new XMLHttpRequest();
+
+  //Abrir la conexión
+  xhr.open('GET', api, true);
+
+  //On load
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+        resolve(JSON.parse(xhr.responseText).results);
+    } else {
+      reject(Error(xhr.statusText));
+    }
+  }
+
+  //Send
+  xhr.send();
+
+});
+
+descargarUsuarios(20)
+  .then(
+    miembros => imprimirHTML(miembros),
+    error => console.error(
+      new Error('Hubo un error' + error)
+    )
+  )
+
+function imprimirHTML(usuarios) {
+  let html = '';
+  usuarios.forEach(usuario => {
+    html += `
+      <li>
+        Nombre: ${usuario.name.first} ${usuario.name.last}
+        Pais: ${usuario.nat}
+        Imagen: 
+          <img src="${usuario.picture.medium}">
+      </li>
+    `;    
+  });
+
+  const contenedorApp = document.querySelector('#app');
+  contenedorApp.innerHTML = html;
+}
+
+
 
 
 
