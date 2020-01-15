@@ -308,7 +308,7 @@ const aplicarDescuento = new Promise ((resolve, reject) => {
 aplicarDescuento.then(resultado => {
   console.log(resultado);  
 })
-*/
+
 
 //Promises con ajax
 const descargarUsuarios = cantidad => new Promise((resolve, reject) => {
@@ -359,6 +359,15 @@ function imprimirHTML(usuarios) {
   const contenedorApp = document.querySelector('#app');
   contenedorApp.innerHTML = html;
 }
+*/
+
+//------------Modulos en ES6---------------//
+//Importar de otros modulos variables, funciones, objetos
+import nombreTarea from './tareas.js';
+console.log(nombreTarea);
+
+
+
 
 
 
