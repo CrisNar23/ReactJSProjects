@@ -1,5 +1,5 @@
-/*
 ///////////////// POO ////////////////////////
+/*
 //Escribir clases
 class Tarea {
     constructor(nombre, prioridad){
@@ -30,13 +30,37 @@ class Tarea {
   
   let compra1 = new ComprasPendientes('Jabon', 'Urgente', 3);
   console.log(compra1.mostrar());
-  */
+*/
 
-//Exportar objetos, variables, funciones
-const nombreTarea = 'Pasear al perro';
+/*
+//Export variables
+export const nombreTarea = 'Pasear al perro';
+
+//Exportar objetos
+const nombreTarea1 = 'Pasear al perro';
 const tarea = 'Tarea';
 
 export default {
-    nombre: nombreTarea,
+    nombre: nombreTarea1,
     tarea: tarea
+}
+
+//Exportar funciones
+export const crearTarea = (tarea, urgencia) => {
+    return `La tarea ${tarea} tiene una urgencia de ${urgencia}`;
+}
+
+export const tareaCompletada = () =>{
+    console.log('La tarea se completó');   
+}
+*/
+//Exporta clases
+export default class Tarea {
+    constructor(nombre, prioridad){
+      this.nombre = nombre;
+      this.prioridad = prioridad;
+    }
+    mostrar(){
+      console.log(`${this.nombre} tiene una prioridad ${this.prioridad}`);      
+    }
 }

@@ -362,9 +362,34 @@ function imprimirHTML(usuarios) {
 */
 
 //------------Modulos en ES6---------------//
-//Importar de otros modulos variables, funciones, objetos
-import nombreTarea from './tareas.js';
+//Importar de otros modulos 
+/*
+//Variables
+import {nombreTarea} from './tareas.js';
+
+//Objetos
+import recibeObjeto from './tareas.js';
+console.log(recibeObjeto);
+
+//Funciones
+import {nombreTarea, crearTarea, tareaCompletada} from './tareas.js';
+
 console.log(nombreTarea);
+
+const tarea1 = crearTarea('Pasear al perro', 'Media');
+console.log(tarea1);
+
+tareaCompletada();
+*/
+//Clases
+import Tarea from './tareas.js';
+
+const tarea1 = new Tarea('Aprender JavaScript', 'Urgente');
+console.log(tarea1);
+tarea1.mostrar();
+
+
+
 
 
 
